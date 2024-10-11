@@ -2,13 +2,17 @@ import Koa from 'koa'
 import http from 'http'
 import routers from './routes'
 import koaBody from 'koa-body'
+import dotenv from 'dotenv';
 import { appLogger } from './utils/Logger'
 import { getPool, initDb } from './database'
 import { Contact } from './models/Contact'
 
+dotenv.config();
+
 initDb({
   "host": "127.0.0.1",
   "user": "backend",
+  "password":  process.env.DB_PASSWORD,
   "database": "backend"
 })
 
